@@ -5,6 +5,13 @@ import Footer from "@/components/Footer";
 import SessionWrapper from "@/components/SessionWrapper";
 import { Suspense } from "react";
 import NextTopLoader from 'nextjs-toploader';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs';
 
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -26,37 +33,53 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/icon.gif" />
-      </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{
-        backgroundImage: `url('/header.png')`,
-        backgroundAttachment: 'fixed',
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center'
-      }} >
-        <SessionWrapper>
 
-          {/* <Router>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <link rel="icon" href="/icon.gif" />
+        </head>
+
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{
+          backgroundImage: `url('/header.png')`,
+          backgroundAttachment: 'fixed',
+          // backgroundSize: 'cover',
+          // backgroundPosition: 'center'
+        }} >
+
+
+
+
+
+
+          <SessionWrapper>
+
+            {/* <Router>
             <Routes>
               <Route path="/restaurant/:restaurantId" element={<RestaurantDetail />} />
               <Route path="/food-items" element={<FoodItems />} />
             </Routes>
           </Router> */}
 
-          <Navbar />
-          <div className="min-h-[85vh]">
-            <NextTopLoader />
-            {children}
+            <Navbar />
+            <div className="min-h-[85vh]">
+              <NextTopLoader />
+              {children}
 
-          </div>
-          <Footer />
+            </div>
+            <Footer />
 
-        </SessionWrapper>
-        <script src="https://cdn.lordicon.com/lordicon.js"></script>
-      </body>
-    </html>
+          </SessionWrapper>
+
+
+          <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        </body>
+      </html>
+
+    </ClerkProvider>
+
+
+
   );
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.10.6",
     "@nextui-org/react": "^2.6.8",
     "@nextui-org/spinner": "^2.2.4",
     "mysql2": "^3.11.5",
